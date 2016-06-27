@@ -1,0 +1,9 @@
+cd /data/mta/Script/Envelope_trending/Exc
+
+/data/mta/Script/Envelope_trending/Scripts/update_database.py
+
+/data/mta/Script/Envelope_trending/Scripts/create_html_page.py
+
+/data/mta/Script/Envelope_trending/Scripts/classify_violation.py
+
+/data/mta/Script/Envelope_trending/Scripts/update_sub_html_pages.py

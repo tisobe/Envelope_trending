@@ -1,0 +1,192 @@
+hkabiasleaki :: EPHIN HOUSEKEEPING A-BIAS: LEAKAGE CURRENT (5EHSE400)
+hkbbiasleaki :: EPHIN HOUSEKEEPING B-BIAS: LEAKAGE CURRENT (5EHSE500)
+hkcbiasleaki :: EPHIN HOUSEKEEPING C-BIAS: LEAKAGE CURRENT (5EHSE600)
+hkdbiasleaki :: EPHIN HOUSEKEEPING D-BIAS: LEAKAGE CURRENT (5EHSE700)
+hkebiasleaki :: EPHIN HOUSEKEEPING E-BIAS: LEAKAGE CURRENT (5EHSE800)
+hkeboxtemp :: EPHIN HOUSEKEEPING EBOX: TEMPERATURE (5EHSE300)
+hkfbiasleaki :: EPHIN HOUSEKEEPING F-BIAS: LEAKAGE CURRENT (5EHSE900)
+hkn6i :: HK 6 Volts Rail - Current
+hkn6v :: HK -6 Volts Rail - Voltage
+hkp27i :: HK 27 Volts Rail - Current
+hkp27v :: HK 27 Volts Rail - Voltage
+hkp5i :: HK 5 Volts Rail - Current
+hkp5v :: HK 5 Volts Rail - Voltage
+hkp6i :: HK 6 Volts Rail - Current
+hkp6v :: HK 6 Volts Rail - Voltage
+calpalv :: Cal pulser amplitude (2CALPALV)
+imhblv :: Imaging bot and top MCP HV monitor (2IMHBLV) 
+imhvlv :: Imaging bot MCP HV monitor (2IMHVLV)         
+lldialv :: Lower level disc setting (2LLDIALV)
+rsrfalv :: Range switch setting (2RSRFALV)
+s1hvlv :: Shield PMT 1 HV monitor (2S1HVLV)
+s2hvlv :: Shield PMT 2 HV monitor (2S2HVLV)
+sphblv :: Spect bot and top MCP HV monitor (2SPHBLV)   
+sphvlv :: Spec bot MCP HV monitor (2SPHVLV)            
+c05palv :: +5V bus monitor (2C05PALV)
+c15nalv :: -15V bus monitor (2C15NALV)
+c15palv :: +15V bus monitor (2C15PALV)
+c24palv :: +24V bus monitor (2C24PALV)
+fe00atm :: Front end temperature (2FE00ATM)
+fepratm :: FE temp card temperature (2FEPRATM)
+imhvatm :: Imaging det HVPS temperature (2IMHVATM)
+iminatm :: Imaging det temperature (2IMINATM
+lvplatm :: LVPS plate temperature (2LVPLATM)
+prbscr :: Primary bus current (2PRBSCR)
+prbsvl :: Primary bus voltage (2PRBSVL)
+smtratm :: Selected motor temperature (2SMTRATM)
+sphvatm :: Spect det HVPS temperature (2SPHVATM)
+spinatm :: Spect det temperature  (2SPINATM)
+fapos :: FA position (3FAPOS/7FAPOS)
+n15vadc :: -15V Power Supply A/D Converter Reading	
+boxtemp :: SEA box temperature (3FASEAAT)
+famtrtemp :: FA motor temperature
+flexatset :: Flexure A temperature setpoint (3SFLXAST)
+smtratm :: Selected motor temperature (2SMTRATM)
+fapos :: FA position (3FAPOS/7FAPOS)
+tscpos :: TSC position (3TSCPOS)
+fatabadc :: FA Tab Position Sensor A/D Converter		
+n15vadc :: -15V Power Supply A/D Converter Reading	
+p15vadc :: +15V Power Supply A/D Converter Reading	 
+p5vadc :: +5V Power Supply A/D Converter Reading		    
+tsctabadc :: TSC Tab Position Sensor A/D converter		
+boxtemp :: SEA box temperature (3FASEAAT)
+famtrtemp :: FA motor temperature
+flexatemp :: Flexure A temperature (3FAFLAAT)
+flexatset :: Flexure A temperature setpoint (3SFLXAST)
+flexbtemp :: Flexure B temperature (3FAFLBAT)
+flexctemp :: Flexure C temperature (3FAFLCAT)
+psutemp :: SEA power supply temperature (3FAPSAT)
+tscmtrtemp :: TSC motor temperature
+shevart :: Shield events
+tlevart :: Total events
+vlevart :: Valid events
+tot_valid :: Total-Valid events
+scct0 :: Sci coincidence counter
+sce1300 :: Sci coincidence counter
+sce150 :: Sci coincidence counter
+sce3000 :: Sci coincidence counter
+sce300 :: Sci coincidence counter
+sch25gm :: Sci coincidence counter
+sch41gm :: Sci coincidence counter
+sch4gm :: Sci coincidence counter
+sch8gm :: Sci coincidence counter
+scint :: Sci coincidence counter
+scp25gm :: Sci coincidence counter
+scp41gm :: Sci coincidence counter
+scp4gm :: Sci coincidence counter
+scp8gm :: Sci coincidence counter
+sca00 :: Sci coincidence counter
+sca01 :: Sci coincidence counter
+sca02 :: Sci coincidence counter
+sca03 :: Sci coincidence counter
+sca04 :: Sci coincidence counter
+sca05 :: Sci coincidence counter
+scb00 :: Sci coincidence counter
+scb01 :: Sci coincidence counter
+scb02 :: Sci coincidence counter
+scb04 :: Sci coincidence counter
+scb05 :: Sci coincidence counter
+scc0 :: Sci coincidence counter
+scct1 :: Sci coincidence counter
+scct2 :: Sci coincidence counter
+scct3 :: Sci coincidence counter
+scct4 :: Sci coincidence counter
+scct5 :: Sci coincidence counter
+scd0 :: Sci coincidence counter
+sce0 :: Sci coincidence counter
+scf0 :: Sci coincidence counter
+scg0 :: Sci coincidence counter
+sch25gr :: Sci coincidence counter
+sch25s1 :: Sci coincidence counter
+sch25s23 :: Sci coincidence counter
+sch41gr :: Sci coincidence counter
+sch41s1 :: Sci coincidence counter
+sch41s23 :: Sci coincidence counter
+sch4gr :: Sci coincidence counter
+sch4s1 :: Sci coincidence counter
+sch4s23 :: Sci coincidence counter
+sch8gr :: Sci coincidence counter
+sch8s1 :: Sci coincidence counter
+sch8s23 :: Sci coincidence counter
+scp25gr :: Sci coincidence counter
+scp25s :: Sci coincidence counter
+scp41gr :: Sci coincidence counter
+scp41s :: Sci coincidence counter
+scp4gr :: Sci coincidence counter
+scp4s :: Sci coincidence counter
+scp8gr :: Sci coincidence counter
+scp8s :: Sci coincidence counter
+deahk1 :: DPA Thermistor 1 - BEP PC Board
+deahk2 :: DPA Thermistor 2 - BEP Oscillator
+deahk3 :: DPA Thermistor 3 - FEP 0 Mongoose
+deahk4 :: DPA Thermistor 4 - FEP 0 PC Board
+deahk5 :: DPA Thermistor 5 - FEP 0 ACTEL
+deahk6 :: DPA Thermistor 6 - FEP 0 RAM
+deahk7 :: DPA Thermistor 7 - FEP 0 Frame Buf
+deahk8 :: DPA Thermistor 8 - FEP 1 Mongoose
+deahk9 :: DPA Thermistor 9 - FEP 1 PC Board
+deahk10 :: DPA Thermistor 10- FEP 1 ACTEL
+deahk11 :: DPA Thermistor 11- FEP 1 RAM
+deahk12 :: DPA Thermistor 12- FEP 1 Frame Buf
+deahk13 :: DEA Video Board ADC
+deahk15 :: Focal Plane Temp. Board 12
+deahk16 :: Focal Plane Temp. Board 11
+deahk17 :: DPA Ground Reference 1
+deahk18 :: DPA 5V Housekeeping A
+deahk19 :: DPA Ground Reference 2
+deahk20 :: DPA 5V Housekeeping B
+deahk25 :: Primary Raw DEA 28V DC
+deahk26 :: Primary Raw DEA 24V DC
+deahk27 :: Primary Raw DEA -15.5V
+deahk28 :: Primary Raw DEA +15.5V
+deahk29 :: Primary Raw DEA -6V DC
+deahk30 :: Primary Raw DEA +6V DC
+deahk31 :: Relative Dose Rad. Monitor Side A
+deahk32 :: Interface Ground Reference
+deahk33 :: Backup Raw DEA 28V DC
+deahk34 :: Backup DEA 24V DC
+deahk35 :: Backup DEA -15.5V DC
+deahk36 :: Backup DEA +15.5V DC
+deahk37 :: Backup DEA -6V DC
+deahk38 :: Backup DEA +6V DC
+deahk39 :: Relative Dose Rad. Monitor Side B
+deahk40 :: Ground
+faedge  ::  FA Tab Edge Detection Flags
+fatabwid    :: Most recently detected FA tab width
+ldrtnum ::  Last Detected Reference Tab Number
+ldrtrelpos  :: Last detected reference tab relative position
+mrmdest :: Most Recent Motor Move Destination
+pwmlevel    :: maximum motor volrtage PWM level most recent move
+tscedge :: TSC Tab Edge Detection Flags
+tsctabwid   :: Most recently detected TSC tab width
+mrmdest :: Analog ground A/D convert reading
+flexbtset :: Flexure B temperature setpoint (3SFLXBST)
+flexctset :: Flexure C temperature setpoint (3SFLXCST)
+tcm_ifu :: IU Temp
+tcm_obc :: OBC Temp
+tcm_ssr1 :: SS Recorder-1 Temp
+tcm_ssr2 :: SS Recorder-2 Temp
+1pin1atc :: PSMC Temp 1A
+flexadif :: DIFF FLEX A & SET
+flexbdif :: DIFF FLEX B & SET
+flexcdif :: DIFF FLEX C & SET
+hrmacav :: HRMA CAVITY AVG
+hrmaxgrd :: HRMA AXIAL
+hrmaradgrd :: HRMA RADIA
+obaavg :: OBA/TFTE
+obaconeavg :: OBA CONE AVG
+obaaxgrd :: OBA AXIAL
+fwblkhdt :: FORWARD BULKHEAD
+aftblkhdt :: AFT BULKHEAD
+mzobacone :: -Z SIDE OBA
+pzobacone :: +Z SIDE OBA
+3ttacs1t :: TT at ACIS Attach #1 Abort Htr
+3ttacs2t :: TT at ACIS Attach #2 Abort Htr
+3ttacs3t :: TT at ACIS Attach #3 Abort Htr
+3ttbrgbt :: TT at Bearing B, Abort Htr TSC4
+3tthrc1t :: TT at HRC Bipod Attach #1
+3tthrc2t :: TT at HRC Bipod Attach #2
+3tthrc3t :: TT at HRC Bipod Attach #3
+3ttralat :: TT at Rail A, Abort Htr TSC3
+3ttralct :: TT at Rail C, Abort Htr TSC3
+3ttvalvt :: TT at Vent Valve, Abort Htr TSC7

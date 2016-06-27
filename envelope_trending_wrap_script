@@ -1,0 +1,1 @@
+TERM=dummy; export TERM; /bin/tcsh  < /data/mta/Script/Envelope_trending/Scripts/envelope_trending_main_script

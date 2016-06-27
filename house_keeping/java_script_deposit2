@@ -1,0 +1,15 @@
+<script type="text/javascript">
+
+
+    function WindowOpener(file) {
+        msgWindow = open("","displayname","toolbar=no,directories=no,menubar=no,location=no,scrollbars=no,status=no,width=1200,height=800,resize=no");
+        msgWindow.document.clear();
+        msgWindow.document.write("<!DOCTYPE html><html><head><title>Envelope Trending </title></head>");
+        msgWindow.document.write("<body bgcolor='white'>");
+        msgWindow.document.write("<iframe src='./"+file+"' border=0 width=1200 height=800></iframe>")
+        msgWindow.document.write("</body></html>")
+        msgWindow.document.close();
+        msgWindow.focus();
+    }
+</script>
+

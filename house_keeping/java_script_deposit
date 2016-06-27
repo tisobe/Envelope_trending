@@ -1,0 +1,20 @@
+<script type="text/javascript">
+
+
+    function WindowOpener(file) {
+        msgWindow = open("","displayname","toolbar=no,directories=no,menubar=no,location=no,scrollbars=no,status=no,width=760,height=400,resize=no");
+        msgWindow.document.clear();
+        msgWindow.document.write("<html><head><title>Envelope Trending </title></head>");
+        msgWindow.document.write("<body bgcolor='white'>");
+        msgWindow.document.write("<iframe src='./Limit_table/"+file+"' border=0 width=760 height=400 target=blank></iframe>")
+        msgWindow.document.write("</body></html>")
+        msgWindow.document.close();
+        msgWindow.focus();
+    }
+
+    function popitup(url) {
+        newwindow=window.open(url,'name','height=400, width=760');
+        if (window.focus) {newwindow.focus()}
+    }
+</script>
+

@@ -1,0 +1,159 @@
+#######################
+MSID Envelope Trending
+#######################
+
++++++++
+Scripts
++++++++
+
+update_database.py     
+------------------
+Update envelope trending data
+
+Input:
+<house_keeping>/mta_env_msid_list       --- a list of msids
+dataseeker output
+
+<house_keeping>/mta_comp_fits_files     --- a list of fits files which provides secondary data
+
+Output:
+<data_dir>/<msid>_data
+Columns:
+    col 1   start time in seconds from 1998.1.1
+    col 2   stop time in seconds from 1998.1.1
+    col 3   the numbers of data points
+    col 4   average
+    col 5   median
+    col 6   standard deviation
+    col 7   minimum
+    col 8   maximum
+    col 9   the numbers of the lower yellow violation
+    col 10  the numbers of the upper yellow violation
+    col 11  the numbers of the lower red violation
+    col 12  the numbers of the upper red violation
+    col 13  the lower yellow violation limit
+    col 14  the upper yellow violation limst
+    col 15  the lower red violation limit
+    col 16  the upper red violation limit
+
+create_html_page.py    
+-------------------
+Create indivisual html pages of all msids in database
+
+Input:
+<data_dir>/<msid>_data              ---- read all <msid>_data files
+<house_keeping>/java_script_deposit
+<house_keeping>/java_script_deposit2
+<house_keeping>/sub_html_list_all
+<house_keeping>/unit_list
+<house_keeping>/unit_supple
+<house_keeping>/dataseeker_entry_list
+<house_keeping>/description_supple
+
+Output:
+<web_dir>/<msid>_plot.html          --- a html page with the interactive trend plot
+
+<house_keeping>/v_table.sqlite3     --- sqlite3 to keep the record of violations
+
+classify_violation.py  
+---------------------
+Create a top html page with violation tables
+
+Input:
+<house_keeping>/envelope_main.html  --- the template of the page
+<house_keeping>/v_table.sqlite3     --- sqlite3 to keep the record of violations
+<web_dir>/*_plot.html               --- find which msids have the page created
+
+Output:
+<web_dir_top>/envelope_main.html    --- the top page
+
+update_sub_html_pages.py
+-------------------------
+Create html pages for different categories of msids
+
+Input:
+<house_keeping>/sub_html_list_all   --- a list of categories and msids which blong to the categories
+<house_keeping>/v_table.sqlite3     --- sqlite3 to keep the record of violations
+
+Output:
+<web_dir>/<category>_main>.html
+
+glimmon_sql_read.py          
+-------------------
+Extract limit information from glimmon datababase
+
+Input:
+<house_keeping>/glimmondb.sqlite3   --- this must be copied regularly from:
+                                            /proj/sot/ska/data/glimmon_archive/glimmondb.sqlite3
+
+Output:
+a list of list of:
+    [<start time>, <stop time>, <yellow lower>, <yellow upper>, <red lower>, <red upper>]
+    times are in seconds from 1998.1.1
+If the limits are not defined, 'na' will be returned.
+
+read_mta_limits_db.py  
+---------------------
+Read mta_limit_db  and return yellow and red lower and upper limits
+
+Input:
+<house_keeping>/mta_limits.db     --- mta limit database symbolic link to: 
+                                            /data/mta4/MTA/data/op_limits/op_limits.db
+                                            http://occweb.cfa.harvard.edu/occweb/FOT/engineering/thermal/AXAFAUTO_RSYNC/G_LIMMON_Archive/glimmondb.sqlite3
+Output:
+a list of list of:
+    [<start time>, <stop time>, <yellow lower>, <yellow upper>, <red lower>, <red upper>]
+    times are in seconds from 1998.1.1
+
+
+violation_estimate_data.py
+-------------------
+Save/read violation estimated times in/from sqlite database v_table
+
+Input:
+called by update_sub_html_pages.py with input format of:
+            (msid, yl_time, yt_time, rl_time, rt_time)
+            times are all in fractional year
+
+Output:
+<house_keeping>/v_table.sqlite3     --- sqlit3 database
+
+
+envelope_common_function.py  
+----------------------------
+A collection of python functions used by all others
+
+envelope_trending_wrap_script
+envelope_trending_main_script
+-----------------------------
+control scripts to run all others
+
+
++++++++++++
+Directries
++++++++++++
+'/data/mta/Script/Envelope_trending/Scripts'        :bin_dir        --- all scripts are kept
+'/data/mta/Script/Envelope_trending/Exc/'           :exc_dir        --- scripts are run here
+'/data/mta/www/mta_envelope_trending/'              :web_top_dir    --- the html top directory
+'/data/mta/www/mta_envelope_trending/Htmls/'        :web_dir        --- the html sub directory
+        Limit_table/                                                --- keep limit table html pages
+        Future/                                                     --- keep plots for the front page display
+'/data/mta/Script/Envelope_trending/Data/'          :data_dir       --- the data directory
+'/data/mta/Script/Envelope_trending/house_keeping/' :house_keeping  --- house keeping
+'/data/mta/Script/Python_script2.7/'                :mta_dir        --- mta python scripts are kept here
+
++++++++++++++++++++++
+Environmental Setting
++++++++++++++++++++++
+The all script must be accessible to  /proj/sot/ska/bin/python
+It also use ascds environment interally (dataseeker)
+
+++++++++++++
+web address
+++++++++++++
+https://cxc.cfa.harvard.edu/mta_days/mta_envelope_trending/envelope_main.html
+
+++++++++
+cron job
+++++++++
+0 1 3,13,23 * * cd /data/mta/Script/Envelope_trending/Exc; /data/mta/Script/Envelope_trending/Scripts/envelope_trending_wrap_script > $HOME/Logs/envelope_trending.cron

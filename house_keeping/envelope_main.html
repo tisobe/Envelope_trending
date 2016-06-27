@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Envelope Trending  Main Page</title>
+
+    <script type="text/javascript">
+        function WindowOpener(file) {
+            msgWindow = open("","displayname","toolbar=no,directories=no,menubar=no,location=no,scrollbars=no,status=no,width=760,height=400,resize=no");
+            msgWindow.document.clear();
+            msgWindow.document.write("<!DOCTYPE html><html><head><title>Envelope Trending</title></head>");
+            msgWindow.document.write("<body bgcolor='white'>");
+            msgWindow.document.write("<iframe src='file:///data/mta/Script/Envelope_trending/Htmls/Limit_table/"+file+"' border=0 width=760 height=400></iframe>")
+            msgWindow.document.write("</body></html>")
+            msgWindow.document.close();
+            msgWindow.focus();
+        }
+    </script>
+
+    <style>
+        td {text-align:center}
+    </style>
+
+</head>
+<body style='background-color:#FAEBD7;font-family:Georgia, "Times New Roman", Times, serif'>
+
+<h2>MTA Envelope Trending of MSID Values</h2>
+
+<p style='text-align:justify;padding-left:30px;padding-right:150px'>
+This page provides links to the time trend plots of msid values which MTA is monitoring.
+</p>
+
+<p style='text-align:justify;padding-left:30px;padding-right:150px'>
+Each data point on the plot is a median point of the data over about 10 day period. Since the input data have 
+5 minutes collection period for the Main Trend and 1 day for the Secondary Trend, the each data
+point on the plots of the former categories is an average of about 2,900 data points, but those
+in the latter categories is around 10 data points. 
+</p>
+
+<p style='text-align:justify;padding-left:30px;padding-right:150px'>
+In the following example plot, 
+the <span style='background-color:#ADD8E6;color:#ADD8E6;'>blue--</span> area indicates the envelope around the data.
+You can think that this is the range where the data points scattered around, if the data were not averaged out for
+each data point. If average values are used instead of the median values, this area could be more symmetrically
+distributed around the data points.
+</p>
+
+<p style='text-align:justify;padding-left:30px;padding-right:150px'>
+The <span style='background-color:#F0E68C;color:#F0E68C;'>yellow</span> area indicates the yellow violation, 
+and, 
+the <span style='background-color:#FFB6C1;color:#FFB6C1;'>red---</span> area indicates the red violation.
+The green dash lines indicate top and bottom envelope prediction to the future.
+</p>
+
+<p style='text-align:justify;padding-left:30px;padding-right:150px'>
+If you hover your mouse over one of
+the data points, you can display more information about that data collection period.
+If you like to magnify the plot, click the magnifier icon at the bottom left corner 
+of the plot and select area that you want to expand. If you like to move around the plot, choose
+the cross icon, then hold down the button on the plot and drag around the plot. 
+You can go back to the full view by clicking the house icon.
+</p>
+
+<p style='text-align:justify;padding-left:30px;padding-right:150px'>
+Although it is not shown on the example plot below, if you open a page from links below,
+there is a link to open a table listing history of violation range changes. 
+</p>
+
+
+<div style='padding-left:100px;padding-top:30px;padding-bottom:40px'>
+#PLOT#
+</div>
+<style>
+
+    body{
+        width:100%;
+    }
+
+</style>
+
+<div style='padding-left:30px;width:80%'>
+<h3>Predicted Near Future Violations</h3>
+
+<div style='padding-bottom:10px'> </div>
+<table border=0 cellpadding=5 style="margin-left:auto;margin-right:auto">
+<td style='vertical-align:top;text-align:center;'>
+#YLFUT#
+</td>
+<td style='vertical-align:top;text-align:center;'>
+#YUFUT#
+</td>
+</tr>
+</table>
+
+<h3>Yellow Violations</h3>
+
+<div style='padding-bottom:10px'> </div>
+#YLLIM#
+<div style='padding-bottom:20px'> </div>
+
+<div style='padding-bottom:10px'> </div>
+#YULIM#
+<div style='padding-bottom:50px'> </div>
+
+<h3>Red Violations</h3>
+
+<div style='padding-bottom:10px'> </div>
+#RLLIM#
+<div style='padding-bottom:20px'> </div>
+
+<div style='padding-bottom:10px'> </div>
+#RULIM#
+<div style='padding-bottom:50px'> </div>
+
+</div>
+
+
+<h3>Plots by Category</h3>
+
+<table border=0 cellpadding=10 style='padding-left:30px;width:80%'>
+<tr>
+
+<td style='vertical-align:top;text-align:center;width:32%'>
+<table border=1 cellpadding=3>
+
+<tr><th>MTA Main Data Trend</th></tr>
+<tr> <th><a href='./Htmls/aciseleca_main.html'>ACIS Electronics Side A</a></th></tr>
+<tr> <th><a href='./Htmls/aciselecb_main.html'>ACIS Electronics Side B</a></th></tr>
+<tr> <th><a href='./Htmls/acismech_main.html'>ACIS Mechanics</a></th></tr>
+<tr> <th><a href='./Htmls/acistemp_main.html'>ACIS Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/batt_temp_main.html'>Battery Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/deahk_elec_main.html'>DEAHK Electronics</a></th></tr>
+<tr> <th><a href='./Htmls/deahk_temp_main.html'>DEAHK Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/ephhk_main.html'>EPH Housekeeping</a></th></tr>
+<tr> <th><a href='./Htmls/ephkey_main.html'>EPH Key Rate</a></th></tr>
+<tr> <th><a href='./Htmls/ephrate_main.html'>EPH  Rate</a></th></tr>
+<tr> <th><a href='./Htmls/ephtv_main.html'>EPH  Temperature and Voltage</a></th></tr>
+<tr> <th><a href='./Htmls/epsbatt_main.html'>EPS Battery</a></th></tr>
+<tr> <th><a href='./Htmls/hrcelec_main.html'>HRC Electronics</a></th></tr>
+<tr> <th><a href='./Htmls/hrchk_main.html'>HRC Housekeeping</a></th></tr>
+<tr> <th><a href='./Htmls/hrctemp_main.html'>HRC Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/hrcveto_main.html'>HRC Veto Rate</a></th></tr>
+<tr> <th><a href='./Htmls/hrmagrad_main.html'>HRMA Gradient</a></th></tr>
+<tr> <th><a href='./Htmls/hrmaheaters_main.html'>HRMA Heaters</a></th></tr>
+<tr> <th><a href='./Htmls/hrmastruts_main.html'>HRMA Struts</a></th></tr>
+<tr> <th><a href='./Htmls/hrmatherm_main.html'>HRMA Thermal</a></th></tr>
+<tr> <th><a href='./Htmls/mups_main.html'>MUPS</a></th></tr>
+</table>
+</td>
+
+<td style='vertical-align:top;text-align:center;width:32%'>
+<table border=1 cellpadding=3>
+<tr><th>MTA Main Data Trend</th></tr>
+<tr> <th><a href='./Htmls/obagrad_main.html'>OBA Gradient</a></th></tr>
+<tr> <th><a href='./Htmls/obaheaters_main.html'>OBA Heaters</a></th></tr>
+<tr> <th><a href='./Htmls/obfwdbulkhead_main.html'>OBA Foward Bulkhead</a></th></tr>
+<tr> <th><a href='./Htmls/pcadftsgrad_main.html'>PCAD FTS Gradient</a></th></tr>
+<tr> <th><a href='./Htmls/pcadgdrift_main.html'>PCAD G Drift</a></th></tr>
+<tr> <th><a href='./Htmls/pcadgrate_main.html'>PCAD G Rate</a></th></tr>
+<tr> <th><a href='./Htmls/pcaditv_main.html'>PCAD Current Votage Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/pcadrwrate_main.html'>PCAD RW Rate</a></th></tr>
+<tr> <th><a href='./Htmls/pcadtemp_main.html'>PCAD Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/precoll_main.html'>Precoll</a></th></tr>
+<tr> <th><a href='./Htmls/simactu_main.html'>SIM Actuator</a></th></tr>
+<tr> <th><a href='./Htmls/simelec_main.html'>SIM Electronics</a></th></tr>
+<tr> <th><a href='./Htmls/simtemp_main.html'>SIM Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/sc_anc_temp_main.html'>Spacecraft Anc Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/sc_main_temp_main.html'>Spacecraft Main Temperature</a></th></tr>
+<tr> <th><a href='./Htmls/spcelec_main.html'>Spacecraft Electronics</a></th></tr>
+<tr> <th><a href='./Htmls/spceleca_main.html'>Spacecraft Electronics Side A</a></th></tr>
+<tr> <th><a href='./Htmls/spcelecb_main.html'>Spacecraft Electronics Side B</a></th></tr>
+</table>
+</td>
+
+
+
+<td style='vertical-align:top;text-align:center;width:32%'>
+<table border=1 cellpadding=3>
+<tr><th>MTA Secondary Data Trend</th></tr>
+<tr> <th><a href='./Htmls/compacispwr_main.html'>ACIS Power Comp</a></th></tr>
+<tr> <th><a href='./Htmls/compaciscent_main.html'>ACIS Cent Comp</a></th></tr>
+<tr> <th><a href='./Htmls/compephkey_main.html'>EPH Key Comp</a></th></tr>
+<tr> <th><a href='./Htmls/compsimoffsetb_main.html'>SIM Offset Comp</a></th></tr>
+<tr> <th><a href='./Htmls/compgradkodak_main.html'>GRADKODAK Comp</a></th></tr>
+
+<tr> <th><a href='./Htmls/hrcelec_i_main.html'>HRC Elec I</a></th></tr>
+<tr> <th><a href='./Htmls/hrcelec_off_main.html'>HRC Elec OFF</a></th></tr>
+<tr> <th><a href='./Htmls/hrcelec_s_main.html'>HRC Elec S</a></th></tr>
+<tr> <th><a href='./Htmls/hrcveto_i_main.html'>HRC VETO I</a></th></tr>
+<tr> <th><a href='./Htmls/hrcveto_off_main.html'>HRC VETO OFF</a></th></tr>
+<tr> <th><a href='./Htmls/hrcveto_s_main.html'>HRC VETO S</a></th></tr>
+
+<tr> <th><a href='./Htmls/gradablk_main.html'>Gradient ABLK</a></th></tr>
+<tr> <th><a href='./Htmls/gradahet_main.html'>Gradient AHET</a></th></tr>
+<tr> <th><a href='./Htmls/gradaincyl_main.html'>Gradient AINCYL</a></th></tr>
+<tr> <th><a href='./Htmls/gradcap_main.html'>Gradient CAP</a></th></tr>
+<tr> <th><a href='./Htmls/gradfap_main.html'>Gradient FAP</a></th></tr>
+<tr> <th><a href='./Htmls/gradfblk_main.html'>Gradient FBLK</a></th></tr>
+<tr> <th><a href='./Htmls/gradhcone_main.html'>Gradient HCONE</a></th></tr>
+<tr> <th><a href='./Htmls/gradhhflex_main.html'>Gradient HHFLEX</a></th></tr>
+<tr> <th><a href='./Htmls/gradhpflex_main.html'>Gradient PHFLEX</a></th></tr>
+<tr> <th><a href='./Htmls/gradhstrut_main.html'>Gradient STRUT</a></th></tr>
+<tr> <th><a href='./Htmls/gradocyl_main.html'>Gradient OCYL</a></th></tr>
+<tr> <th><a href='./Htmls/gradpcolb_main.html'>Gradient PCOLB</a></th></tr>
+<tr> <th><a href='./Htmls/gradperi_main.html'>Gradient PERI</a></th></tr>
+<tr> <th><a href='./Htmls/gradsstrut_main.html'>Gradient SSTRUT</a></th></tr>
+<tr> <th><a href='./Htmls/gradtfte_main.html'>Gradient TFTE</a></th></tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<hr />
+<div style='padding-bottom:10px'></div>
+Last Updated: #UPDATE#
+<br />
+If you have questions about this page, please contact: <a href='mailto:tisobe@cfa.harvard.edu'>tisobe@cfa.harvard.ed</a>.
+
+<div style='padding-bottom:20px'></div>
+
+

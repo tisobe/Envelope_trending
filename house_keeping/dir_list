@@ -1,0 +1,7 @@
+'/data/mta/Script/Envelope_trending/Scripts'                    :bin_dir
+'/data/mta/Script/Envelope_trending/Exc/'                       :exc_dir
+'/data/mta/www/mta_envelope_trending/'                          :web_top_dir
+'/data/mta/www/mta_envelope_trending/Htmls/'                    :web_dir
+'/data/mta/Script/Envelope_trending/Data/'                      :data_dir
+'/data/mta/Script/Envelope_trending/house_keeping/'             :house_keeping
+'/data/mta/Script/Python_script2.7/'                            :mta_dir
