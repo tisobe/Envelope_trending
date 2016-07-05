@@ -6,7 +6,7 @@
 #                                                                                                   #
 #           author: t. isobe (tisobe@cfa.harvard.edu)                                               #
 #                                                                                                   #
-#           last update: Jun 23, 2016                                                               #
+#           last update: Jul 01, 2016                                                               #
 #                                                                                                   #
 #####################################################################################################
 
@@ -519,6 +519,8 @@ def set_limit_list(msid):
             tchk = 1
         elif unit.lower() == 'degf':
             tchk = 2
+        elif unit.lower() == 'psia':
+            tchk = 3
     except:
         pass
     

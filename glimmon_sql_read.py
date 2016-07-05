@@ -6,7 +6,7 @@
 #                                                                                                   #
 #           author: t. isobe (tisobe@cfa.harvard.edu)                                               #
 #                                                                                                   #
-#           last update: Jun 16, 2016                                                               #
+#           last update: Jul 01, 2016                                                               #
 #                                                                                                   #
 #####################################################################################################
 
@@ -51,6 +51,13 @@ zspace = '/tmp/zspace' + str(rtail)
 #--- set location of glimmon 
 #
 glimmon      = house_keeping + '/glimmondb.sqlite3'
+#
+#--- speical msid database
+#
+sp_msid_list =  ["cpa1pwr", "cpa2pwr", "cpcb15v", "cpcb5v", "csitb15v", "csitb5v", "ctsb15v", "ctsb5v", \
+                 "ctub15v", "ctxbpwr", "eepb5v", "eoecnv1c", "eoecnv2c", "eoecnv3c", "eoesac1c", "eoesac2c",\
+                 "epb15v", "epb5v", "acpb5cv", "ade2p5cv", "aspeb5cv", "eoeb3cic", "eoeb3cic", "ai1ax2x", \
+                 "eoeb1cic", "eoeb2cic"]
 
 #-----------------------------------------------------------------------------------
 #-- read_glimmon: read glimmondb.sqlite3 and return yellow and red lower and upper limits 
@@ -63,6 +70,7 @@ def read_glimmon(msid, tchk):
             tchk        --- whether this is temp and need to be converted into k
                             if degc tchk = 1
                                degf tchk = 2
+                               psia tchk = 3
     output: limit_list  --- a list of lists which contain:
                         time    --- starting time in seconds from 1998.1.1
                         ntime   --- ending time in seconds from 1998.1.1
@@ -71,6 +79,40 @@ def read_glimmon(msid, tchk):
                         r_min   --- lower red limit
                         r_max   --- upper red limit
     """
+#
+#--- check the msid is in the special database list
+#
+    if msid.lower() in sp_msid_list:
+        limit_list = special_case_database(msid)
+#
+#--- otherwise use glimmon database
+#
+    else:
+        limit_list = read_glimmon_main(msid, tchk)
+
+    return limit_list
+
+#-----------------------------------------------------------------------------------
+#-- read_glimmon_main: read glimmondb.sqlite3 and return yellow and red lower and upper limits 
+#-----------------------------------------------------------------------------------
+
+def read_glimmon_main(msid, tchk):
+    """
+    read glimmondb.sqlite3 and return yellow and red lower and upper limits
+    input:  msid        --- msid
+            tchk        --- whether this is temp and need to be converted into k
+                            if degc tchk = 1
+                               degf tchk = 2
+                               psia tchk = 3
+    output: limit_list  --- a list of lists which contain:
+                        time    --- starting time in seconds from 1998.1.1
+                        ntime   --- ending time in seconds from 1998.1.1
+                        y_min   --- lower yellow limit
+                        y_max   --- upper yellow limit
+                        r_min   --- lower red limit
+                        r_max   --- upper red limit
+    """
+
 #
 #--- connect to sqlite database
 #
@@ -87,11 +129,6 @@ def read_glimmon(msid, tchk):
 #--- glimmon keeps the temperature related quantities in C. convert it into K, if needed.
 #
     limit_list = []
-    if tchk == 1 :
-        add = 273.15
-
-    else:
-        add = 0
 
     for k in range(0, len(allrows)):
         tup   = allrows[k]
@@ -112,27 +149,19 @@ def read_glimmon(msid, tchk):
         except:
             ntime = 3218831995              #---- 2100:001:00:00:00
 #
-#--- if tchk is 2, convert the temperature from F to K
+#--- get the values and convert unit if necessary
 #
-        y_min = float(tup[11]) + add
-        if tchk == 2:
-            y_min = ecf.f_to_k(y_min)
-        y_min = ecf.round_up(y_min)
+        y_min = float(tup[11])
+        y_min = unit_modification(y_min, tchk)
 
-        y_max = float(tup[10]) + add
-        if tchk == 2:
-            y_max = ecf.f_to_k(y_max)
-        y_max = ecf.round_up(y_max)
+        y_max = float(tup[10])
+        y_max = unit_modification(y_max, tchk)
 
-        r_min = float(tup[13]) + add
-        if tchk == 2:
-            r_min = ecf.f_to_k(r_min)
-        r_min = ecf.round_up(r_min)
+        r_min = float(tup[13])
+        r_min = unit_modification(r_min, tchk)
 
-        r_max = float(tup[12]) + add
-        if tchk == 2:
-            r_max = ecf.f_to_k(r_max)
-        r_max = ecf.round_up(r_max)
+        r_max = float(tup[12])
+        r_max = unit_modification(r_max, tchk)
 
         alist = [time, ntime,  y_min, y_max, r_min, r_max]
         limit_list.append(alist)
@@ -143,6 +172,89 @@ def read_glimmon(msid, tchk):
         limit_list = [[0, 3218831995, 'na', 'na', 'na', 'na']]
 
     return limit_list
+
+#-----------------------------------------------------------------------------------
+#-- unit_modification: modify value depending on unit                             --
+#-----------------------------------------------------------------------------------
+
+def unit_modification(val, tchk):
+    """
+    modify value depending on unit
+    input:  val         --- original value
+            tchk        --- whether this is temp and need to be converted into k
+                            if degc tchk = 1
+                               degf tchk = 2
+                               psia tchk = 3
+    output: val         --- updated value
+    """
+
+    if tchk == 1:
+        val += 273.15               #--- C to K conversion
+    elif tchk == 2:
+        val = ecf.f_to_k(val)       #--- F to K conversion
+    elif tchk == 3:
+        val /= 0.145038             #--- kp to psia conversion
+#
+#--- round off the value to 2 dicimal points
+#
+    val = ecf.round_up(val)
+
+    return val
+
+
+#-----------------------------------------------------------------------------------
+#-- special_case_database: read special glimmon entry limit database and create list 
+#-----------------------------------------------------------------------------------
+
+def special_case_database(msid):
+    """
+    read special glimmon entry limit database and create list
+    input:  msid        --- a msid
+    output: l_list      --- a list of limits
+    """
+
+    file = house_keeping + 'glimmon_special_limit'
+    data = ecf.read_file_data(file)
+
+    bstart = 48902399.0             #---- 1999:202:00:00:00
+    mstop  = 3218831995.0           #---- 2100:001:00:00:00
+
+    l_list = []
+    for ent in data:
+        atemp  = re.split('\s+', ent)
+        tmsid  = atemp[0].strip()
+        tmsid  = tmsid.lower()
+
+        if tmsid != msid:
+            continue
+
+        start  = float(atemp[5])
+        limit  = [start, mstop, float(atemp[1]), float(atemp[2]), float(atemp[3]), float(atemp[4])]
+#
+#--- check glimmon to find any limit data previous to starting date
+#
+        glimit = read_glimmon_main(msid, 0)
+
+        l_list = []
+        for lent in glimit:
+            stime = float(lent[0])
+            ltime = float(lent[1])
+
+            if ltime < start:
+                l_list.append(lent)
+
+            elif (stime < start) and (ltime >=start):
+                lent[1] = start
+                l_list.append(lent)
+                break
+
+            elif ltime > start:
+                break
+
+        l_list.append(limit)
+        
+    return l_list
+
 
 #-----------------------------------------------------------------------------------------
 #-- TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST    ---
@@ -186,6 +298,20 @@ class TestFunctions(unittest.TestCase):
         msid = '4prt1at'
         out2 = read_glimmon(msid, tchk)
         print "4PRT1AT: " + str(out2)
+
+        tchk = 0
+        msid = 'eoeb1cic'
+        out2 = read_glimmon(msid, 0)
+        print "EOEB1CIC: " + str(out2)
+
+#------------------------------------------------------------
+
+    def test_special_case_database(self):
+
+        
+
+        for msid in sp_msid_list:
+            print "Secondary-- " +  msid + ': ' +  str(special_case_database(msid))
 
 #-----------------------------------------------------------------------------------
 

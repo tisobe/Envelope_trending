@@ -6,7 +6,7 @@
 #                                                                                                         #
 #           author: t. isobe (tisobe@cfa.harvard.edu)                                                     #
 #                                                                                                         #
-#           last update: Jun 27, 2016                                                                     #
+#           last update: Jun 28, 2016                                                                     #
 #                                                                                                         #
 ###########################################################################################################
 
@@ -132,6 +132,7 @@ def create_html_page():
 
 #    for msid in ['1dactbt']:               #--- test test test 
 #    for msid in ['2detart_off']:               #--- test test test 
+#    for msid in ["cpa1pwr", "pftankop"]:               #--- test test test 
 
         print 'Processing: ' + msid
 
@@ -1205,7 +1206,7 @@ def predict_trend(pdata, xmin, xmax):
     ebot = emed - 3.5 * estd
     etop = emed + 3.5 * estd
     
-    efactor = 0.7
+    efactor = 0.75
 
     for k in range(len(pdata[5])):
 
